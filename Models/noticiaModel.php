@@ -25,7 +25,7 @@ class NoticiaModel {
         return $query->fetch(PDO::FETCH_OBJ);
     }
 
-    function borrar($idNoticias) {
+    function borrar($idNoticia) {
         $query = $this->db->prepare('DELETE FROM noticia WHERE id_noticia = ?');
         $query->execute([$idNoticia]); 
     }
