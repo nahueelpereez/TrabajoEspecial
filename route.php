@@ -16,7 +16,7 @@
     $r->addRoute("noticias", "GET", "NoticiasController", "obtenerNoticias");
     $r->addRoute("equipo/:ID", "GET", "EquiposController", "obtenerEquipo");
     $r->addRoute("noticia/:ID", "GET", "NoticiasController", "obtenerNoticia");
-    $r->addRoute("eliminar/:ID", "GET", "NoticiasController", "eliminarNoticia");
+    $r->addRoute("noticias/:ID", "GET", "NoticiasController", "eliminarNoticia");
     $r->addRoute("equipos/:ID", "GET", "EquiposController", "eliminarEquipo");
     $r->addRoute("editarNoticia", "GET", "NoticiasController", "editarNoticia");
     $r->addRoute("editarEquipo", "GET", "EquiposController", "editarEquipo");
