@@ -9,11 +9,13 @@ ocurre en el mundo del futbol registrandote en nuestra pagina.</p>
 
 <ul class="list-group mt-4">
     {foreach $noticias as $noticia}
+    <form action="noticias/{$noticia->id_notica}" method="GET">
         <li class="list-group-item">
         <h3>{$noticia->titulo}</h3> | {$noticia->fecha}
         {$noticia->contenido|truncate:1000:"..."} 
-        <a href="editarNoticia/{$noticia->contenido}"><button type="sumbit" class="btn btn-secondary">EDITAR</button></a>
-        <a href="noticias/{$noticia->id_notica}"><button type="sumbit" class="btn btn-danger">ELIMINAR</button></a></li>
+        <button type="sumbit" class="btn btn-secondary">EDITAR</button>
+        <button type="sumbit" class="btn btn-danger">ELIMINAR</button></li>
+    </form>
     {/foreach}
 </ul>
 
