@@ -8,12 +8,12 @@ ocurre en el mundo del futbol registrandote en nuestra pagina.</p>
 
 
 <ul class="list-group mt-4">
-    {foreach $noticias as $noticia }
-        <li class="noticia list-group-item">
+    {foreach $noticias as $noticia}
+        <li class="list-group-item">
         <h3>{$noticia->titulo}</h3> | {$noticia->fecha}
-        {$noticia->contenido|truncate:15:"..."} 
+        {$noticia->contenido|truncate:1000:"..."} 
         <small><a href="detallesNoticia/{$noticia->contenido}">VER</a></small>
-        <small><a href="eliminar/{$noticia->id_noticia}">ELIMINAR</a></li></small>
+        <a href="noticias/{$noticia->id_notica}"><button type="sumbit">ELIMINAR</button></a></li>
     {/foreach}
 </ul>
 
