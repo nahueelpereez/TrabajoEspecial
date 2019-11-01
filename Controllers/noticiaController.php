@@ -62,8 +62,17 @@ class NoticiasController{
 
     }
 
-    public function editarNoticia(){
+   public function editarNoticia(){
+        $id_noticia = $_POST['id_noticia'];
+        $titulo = $_POST['titulo'];
+        $fecha = $_POST['fecha'];
+        $descripcion = $_POST['descripcion'];
 
+        if(!empty($titulo) && !empty($fecha) && !empty($descripcion)){
+            $this->model->editarNoticia($titulo, $fecha, $descripcion);
+            header("Location" . basehref . "editarNoticia");
+        }
     }
+
 
 }
