@@ -12,8 +12,8 @@ ocurre en el mundo del futbol registrandote en nuestra pagina.</p>
         <li class="list-group-item">
         <h3>{$noticia->titulo}</h3> | {$noticia->fecha}
         {$noticia->contenido|truncate:1000:"..."} 
-        <small><a href="detallesNoticia/{$noticia->contenido}">VER</a></small>
-        <a href="noticias/{$noticia->id_notica}"><button type="sumbit">ELIMINAR</button></a></li>
+        <a href="editarNoticia/{$noticia->contenido}"><button type="sumbit" class="btn btn-secondary">EDITAR</button></a>
+        <a href="noticias/{$noticia->id_notica}"><button type="sumbit" class="btn btn-danger">ELIMINAR</button></a></li>
     {/foreach}
 </ul>
 
