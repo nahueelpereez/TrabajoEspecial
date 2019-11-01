@@ -53,7 +53,7 @@ class NoticiasController{
     public function eliminarNoticia($params = null) {
         $idNoticia = $params[':ID'];
         $this->model->borrar($idNoticia);
-        header("Location: " . ELIMINAR);
+        header("Location: " . noticias);
     }
 
     public function showForm(){
