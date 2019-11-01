@@ -51,6 +51,10 @@ class NoticiasController{
     }
 
     public function eliminarNoticia($params = null) {
+        
+        $autenticador = new Autenticacion();
+        $autenticador->checkLoggedIn();
+        
         $idNoticia = $params[':ID'];
         $this->model->borrar($idNoticia);
         header("Location: " . noticias);
