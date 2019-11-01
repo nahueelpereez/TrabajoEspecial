@@ -62,6 +62,10 @@ public function obtenerEquipo($params = null){
     }
     
     public function eliminarEquipo($params = null) {
+
+        $autenticador = new Autenticacion();
+        $autenticador->checkLoggedIn();
+        
         $idEquipo = $params[':ID'];
         $this->model->eliminar($idEquipo);
         header("Location: " . equipos);
