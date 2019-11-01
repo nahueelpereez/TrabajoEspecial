@@ -36,5 +36,11 @@ class NoticiaModel {
         
         return $this->db->lastInsertId();
     }
+    
+    public function editarNoticia($id_noticia, $fecha,$titulo, $descripcion){
+        $sentencia = $this->db->prepare('UPDATE noticia SET titulo=?, fecha=?, descripcion=? WHERE id_noticia=?');
+        $sentencia->execute(array($fecha, $titulo, $descripcion, $id_noticia));
+        var_dump($sentencia);
+    }
 
 }
