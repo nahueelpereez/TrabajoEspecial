@@ -19,7 +19,7 @@ class Autenticacion{
     public function checkLoggedIn(){
         session_start();
         if(!isset($_SESSION["id_usuario"])){
-            header('location' . LOGIN);
+            header('Location: ' . login);
             die();
         }
     }
