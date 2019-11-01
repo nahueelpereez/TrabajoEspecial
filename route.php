@@ -21,6 +21,7 @@
     $r->addRoute("editarNoticia", "GET", "NoticiasController", "editarNoticia");
     $r->addRoute("editarEquipo", "GET", "EquiposController", "editarEquipo");
     $r->addRoute("equipos", "GET", "EquiposController", "ShowEquipos");
+    $r->addRoute("editarNoticia", "POST", "NoticiasController", "editarNoticia");
 
         
     $r->addRoute("mostrarFormEquipo", "GET", "EquiposController", "showForm");
