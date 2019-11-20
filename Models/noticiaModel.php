@@ -30,11 +30,18 @@ class NoticiaModel {
         $query->execute([$idNoticia]); 
     }
 
-    public function guardar($titulo, $fecha, $descripcion) {
-        $query = $this->db->prepare('INSERT INTO noticia(titulo, fecha, contenido) VALUES(?,?,?)');
-        $query->execute([$titulo, $fecha, $descripcion]);
+   public function guardar($titulo, $fecha, $descripcion, $idEquipo) {
+        $query = $this->db->prepare('INSERT INTO noticia(titulo, fecha, contenido, equipo) VALUES(?,?,?,?)');
+        $query->execute([$titulo, $fecha, $descripcion, $idEquipo]);
         
         return $this->db->lastInsertId();
+    }
+    
+    public function obtenerNombreEquipo() {
+       $query = $this->db->prepare('SELECT n.*, e.nombre as nombre_equipo FROM noticia n JOIN equipo e  ON e.id_equipo = n.equipo');
+       $query->execute();
+       return $query->fetchAll(PDO::FETCH_OBJ);
+      
     }
     
     public function editarNoticia($id_noticia, $fecha,$titulo, $descripcion){
