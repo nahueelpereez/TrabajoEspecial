@@ -39,9 +39,10 @@ class NoticiasController{
         $titulo = $_POST['titulo'];
         $fecha = $_POST['fecha'];
         $descripcion = $_POST['descripcion'];
+        $idEquipo = $_POST['nombre_equipo'];
    
-        if (!empty($titulo)  && !empty($fecha) && !empty($descripcion)) {
-            $this->model->guardar($titulo, $fecha, $descripcion);
+        if (!empty($titulo)  && !empty($fecha) && !empty($descripcion) && !empty($idEquipo)) {
+            $this->model->guardar($titulo, $fecha, $descripcion, $idEquipo);
             header("Location: " . VER);
             die();
         }
@@ -76,6 +77,12 @@ class NoticiasController{
             $this->model->editarNoticia($titulo, $fecha, $descripcion);
             header("Location" . basehref . "editarNoticia");
         }
+    }
+    
+    public function showFormEditar(){
+        
+        $this->view->showFormEditar();
+
     }
 
 
