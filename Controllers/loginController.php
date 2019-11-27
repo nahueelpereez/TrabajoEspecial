@@ -47,5 +47,10 @@ class LoginController{
         $hash = password_hash($_GET['pass'], PASSWORD_DEFAULT);
 	    echo "Hash:" . $hash;
     }
+	
+    public function showRegistro() {
+        $this->view->showRegistro();
+    }
+
 
 }
