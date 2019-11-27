@@ -1,9 +1,12 @@
 {include 'Templates/header.tpl'}
 
-<div class="container">
+<form action="obtenerNoticia" method="GET">
+    <div class="container">    
+        <h3>{$noticia->titulo}</h3><p>{$noticia->fecha}</p>
+        <p>{$noticia->contenido|truncate:1000:"..."}</p>
+    </div>
+</form>
 
-    <h1>{$noticia->titulo} </h1><p>({$noticia->fecha})</p>
-    <p>{$noticia->descripcion|wordwrap:50:"<br/>\n"}</p>
+{include 'Templates/vue/comentariosVue.tpl'}
 
-</div>
 {include 'Templates/footer.tpl'}
