@@ -22,14 +22,14 @@ class NoticiasController{
         $this->view->mostrarNoticias($noticias);
     }
 
-    public function obtenerNoticia($params = null) {
+     public function obtenerNoticia($params = null) {
         
         $idNoticia = $params[':ID'];
         $noticia = $this->model->getNoticia($idNoticia);
 
-        if ($noticia) // si existe la noticia
+        if ($noticia){ // si existe la noticia
             $this->view->mostrarNoticia($noticia);
-        else
+        }else
             $this->view->mostrarError('La noticia no existe');
     }
 
