@@ -41,6 +41,21 @@ class LoginController{
         $this->autenticador->logout();
         header('Location: ' . LOGIN);
     }
+	
+    public function NuevoUsuario(){
+        
+        $email = $_POST['email'];
+        $password = $_POST['password'];
+        
+        if (!empty($email)  && !empty($password)) {
+            $this->model->guardarUsuario($email, $password);
+            header("Location: " . noticias);
+            die();
+        }
+        else {
+            $this->view->mostrarError("Faltan datos obligatorios");
+        }
+    }
 
     public function register() {
         //var_dump($_POST['user']);
