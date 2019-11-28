@@ -33,11 +33,11 @@
     $r->addRoute("mostrarFormRegistro", "GET", "LoginController", "showRegistro");
     $r->addRoute("nuevaNoticia", "POST", "NoticiasController", "agregarNoticia");
     $r->addRoute("nuevoEquipo", "POST", "EquiposController", "agregarEquipo");
+    $r->addRoute("nuevoUsuario", "POST", "LoginController", "NuevoUsuario");
 
     $r->addRoute("login", "GET", "LoginController", "showLogin");
     $r->addRoute("verificar", "POST", "LoginController", "verificarUsuario");
     $r->addRoute("logout", "GET", "LoginController", "logout");
-    $r->addRoute("register", "GET", "LoginController", "register");
 
     //Ruta por defecto.
     $r->setDefaultRoute("NoticiasController", "obtenerNoticias");
