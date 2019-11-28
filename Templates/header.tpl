@@ -47,10 +47,12 @@
                 class="btn btn-primary">Inicia Sesion</button></a>
           </li>
           {/if}
+          {if isset($smarty.session.id_usuario) }
           <li class="nav-item active">
             <a class="nav-link" href="logout"><button type="button" class="btn btn-info">Salir</button><span
             class="sr-only">(current)</span></a>
           </li>
+          {/if}
         </ul>
       </div>
     </nav>
