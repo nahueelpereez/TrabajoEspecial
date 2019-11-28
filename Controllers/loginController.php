@@ -22,13 +22,13 @@ class LoginController{
 
     public function verificarUsuario(){
         $email = $_POST['email'];
-        $password = $_POST['password'];
+        $contraseña = $_POST['contraseña'];
 
         $usuario = $this->model->getByUsername($email);
 
         var_dump($usuario);
         // encontró un usuario con el email que mandó, y tiene la misma contraseña
-        if (!empty($usuario) && password_verify($password, $usuario->password)) {
+        if (!empty($usuario) && password_verify($contraseña, $usuario->contraseña)) {
             $this->autenticador->login($usuario);
             header('Location: '. basehref);
         } 
@@ -45,22 +45,17 @@ class LoginController{
     public function NuevoUsuario(){
         
         $email = $_POST['email'];
-        $password = $_POST['password'];
+        $contraseña = $_POST['contraseña'];
         
-        if (!empty($email)  && !empty($password)) {
-            $this->model->guardarUsuario($email, $password);
+        if (!empty($email)  && !empty($contraseña)) {
+            $hash = password_hash($contraseña, PASSWORD_DEFAULT);
+            $this->model->guardarUsuario($email, $hash);
             header("Location: " . noticias);
             die();
         }
         else {
             $this->view->mostrarError("Faltan datos obligatorios");
         }
-    }
-
-    public function register() {
-        //var_dump($_POST['user']);
-        $hash = password_hash($_GET['pass'], PASSWORD_DEFAULT);
-	    echo "Hash:" . $hash;
     }
 	
     public function showRegistro() {
