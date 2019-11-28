@@ -11,7 +11,7 @@
 
         <div class="form-group">
             <label>Password</label>
-            <input type="password" name="password" class="form-control" placeholder="Password">
+            <input type="password" name="contraseña" class="form-control" placeholder="Password">
         </div>
 
         {if $error}
