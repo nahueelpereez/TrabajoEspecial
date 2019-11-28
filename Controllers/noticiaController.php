@@ -17,7 +17,7 @@ class NoticiasController{
 
     public function obtenerNoticias(){
         session_start();
-        $noticias = $this->model->getNoticias();
+        $noticias = $this->model->obtenerNombreEquipo();
 
         $this->view->mostrarNoticias($noticias);
     }
