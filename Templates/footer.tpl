@@ -6,7 +6,7 @@
                     <h5 class="mb-1">Registrate Ahora!</h5>
                 </li>
                 <li class="list-inline-item">
-                    <a href="registro.html" class="btn btn-outline-white btn-rounded"><button type="button"
+                    <a href="mostrarFormRegistro" class="btn btn-outline-white btn-rounded"><button type="button"
                             class="btn btn-primary">REGISTRATE!</button></a>
                 </li>
             </ul>
