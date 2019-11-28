@@ -19,14 +19,14 @@ class NoticiaModel {
     }
 
     public function getNoticia($idNoticia) {
-        $query = $this->db->prepare('SELECT * FROM noticia WHERE id_noticia = ?');
+        $query = $this->db->prepare('SELECT * FROM noticia WHERE id_notica = ?');
         $query->execute(array($idNoticia));
 
         return $query->fetch(PDO::FETCH_OBJ);
     }
 
     function borrar($idNoticia) {
-        $query = $this->db->prepare('DELETE FROM noticia WHERE id_noticia = ?');
+        $query = $this->db->prepare('DELETE FROM noticia WHERE id_notica = ?');
         $query->execute([$idNoticia]); 
     }
 
