@@ -18,9 +18,9 @@ class UsuarioModel{
         return $query->fetch(PDO::FETCH_OBJ);
     }
     
-    public function guardarUsuario($email, $password) {
-        $query = $this->db->prepare('INSERT INTO usuario(email, password) VALUES(?,?)');
-        $query->execute([$email, $password]);
+    public function guardarUsuario($email, $hash) {
+        $query = $this->db->prepare('INSERT INTO usuario(email, contraseña) VALUES(?,?)');
+        $query->execute([$email, $hash]);
         
         return $this->db->lastInsertId();
     }
