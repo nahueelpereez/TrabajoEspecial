@@ -12,11 +12,14 @@ ocurre en el mundo del futbol registrandote en nuestra pagina.</p>
     <form action="noticias/{$noticia->id_notica}" method="GET">
         <li class="list-group-item">
         <h3>{$noticia->titulo}</h3> | {$noticia->fecha}
-        {$noticia->contenido|truncate:1000:"..."} 
-        <button type="sumbit" class="btn btn-secondary">EDITAR</button>
-        <button type="sumbit" class="btn btn-danger">ELIMINAR</button></li>
+        {$noticia->contenido|truncate:1000:"..."}
+        <h5>{$noticia->nombre_equipo}</h5>
+        <button type="submit" class="btn btn-secondary">EDITAR</button>
+        <button type="submit" class="btn btn-secondary" href="obtenerNoticia/{$noticia->id_notica}">VER</button>
+        <button type="submit" class="btn btn-danger">ELIMINAR</button></li>
     </form>
     {/foreach}
 </ul>
 
 {include 'Templates/footer.tpl'}
+
