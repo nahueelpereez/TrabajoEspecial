@@ -18,16 +18,18 @@
     $r->addRoute("equipo/:ID", "GET", "EquiposController", "obtenerEquipo");
     $r->addRoute("noticias/:ID", "GET", "NoticiasController", "obtenerNoticia");
 
-    $r->addRoute("noticias/:ID", "GET", "NoticiasController", "eliminarNoticia");
+    $r->addRoute("eliminar/:ID", "GET", "NoticiasController", "eliminarNoticia");
     $r->addRoute("equipos/:ID", "GET", "EquiposController", "eliminarEquipo");
 
-    $r->addRoute("editarNoticia", "GET", "NoticiasController", "editarNoticia");
     $r->addRoute("editarEquipo", "GET", "EquiposController", "editarEquipo");
 
     $r->addRoute("equipos", "GET", "EquiposController", "ShowEquipos");
-    $r->addRoute("editarNoticia", "POST", "NoticiasController", "editarNoticia");
+    $r->addRoute("editar/:ID", "POST", "NoticiasController", "editarNoticia");
 
-        
+    $r->addRoute("deleteUsuario/:ID", "GET", "LoginController", "borrarusuario");
+
+    
+    $r->addRoute("mostrarAdministradores", "GET", "LoginController", "showAdministradores");
     $r->addRoute("mostrarFormEquipo", "GET", "EquiposController", "showForm");
     $r->addRoute("mostrarFormNoticia", "GET", "NoticiasController", "showForm");
     $r->addRoute("mostrarFormRegistro", "GET", "LoginController", "showRegistro");
