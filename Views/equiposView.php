@@ -28,9 +28,10 @@ class EquipoView {
     }
 
     public function mostrarError($msgError) {
-        echo "<h1>ERROR!</h1>";
-        echo "<h2>{$msgError}</h2>";
+        echo "ERROR!";
+        echo "{$msgError}";
     }
+
 
     public function showFormEquipo(){
         $this->smarty->assign('titulo', 'Agregar Equipo');
