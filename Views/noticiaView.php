@@ -13,6 +13,7 @@ class NoticiaView {
 
     public function mostrarNoticias($noticias) {
         $this->smarty->assign('titulo', 'Lista de noticias');
+        $this->smarty->assign('titulo1', 'Editar noticia');
         $this->smarty->assign('noticias', $noticias);
 
         $this->smarty->display('Templates/noticias.tpl');
