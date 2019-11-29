@@ -41,7 +41,7 @@ class NoticiasController{
         $descripcion = $_POST['descripcion'];
         $idEquipo = $_POST['nombre_equipo'];
    
-        if (!empty($titulo)  && !empty($fecha) && !empty($descripcion) && !empty($idEquipo)) {
+        if (!empty($titulo)  && !empty($fecha) && !empty($descripcion)) {
             $this->model->guardar($titulo, $fecha, $descripcion, $idEquipo);
             header("Location: " . VER);
             die();
