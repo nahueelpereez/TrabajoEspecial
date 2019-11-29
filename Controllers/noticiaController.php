@@ -74,8 +74,8 @@ class NoticiasController{
         $descripcion = $_POST['descripcion'];
 
         if(!empty($titulo) && !empty($fecha) && !empty($descripcion)){
-            $this->model->editarNoticia($titulo, $fecha, $descripcion);
-            header("Location" . basehref . "editarNoticia");
+            $this->model->editar($titulo, $fecha, $descripcion);
+            header("Location" . noticias);
         }
     }
     
@@ -84,6 +84,9 @@ class NoticiasController{
         $this->view->showFormEditar();
 
     }
+
+
+}
 
 
 }
