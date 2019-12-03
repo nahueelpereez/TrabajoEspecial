@@ -30,12 +30,17 @@ class NoticiaModel {
         $query->execute([$idNoticia]); 
     }
 
-   public function guardar($titulo, $fecha, $descripcion, $idEquipo) {
-        $query = $this->db->prepare('INSERT INTO noticia(titulo, fecha, contenido, equipo) VALUES(?,?,?,?)');
-        $query->execute([$titulo, $fecha, $descripcion, $idEquipo]);
-        
+   public function guardar($titulo, $fecha, $contenido, $idEquipo, $imagen = null) {
+        $filepath = null;
+        if ($imagen)
+            $filepath = $this->moveFile($imagen);
+
+        $sentencia = $this->db->prepare("INSERT INTO noticia(titulo, fecha, contenido, equipo, imagen) VALUES(?,?,?,?,?)");
+        $sentencia->execute(array($titulo, $fecha, $contenido, $idEquipo, $filepath));
+
         return $this->db->lastInsertId();
     }
+
     
     public function obtenerNombreEquipo() {
        $query = $this->db->prepare('SELECT n.*, e.nombre as nombre_equipo FROM noticia n JOIN equipo e  ON e.id_equipo = n.equipo');
