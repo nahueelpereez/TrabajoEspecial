@@ -33,27 +33,25 @@ class NoticiasController{
             $this->view->mostrarError('La noticia no existe');
     }
 
-    public function agregarNoticia() {
+     public function agregarNoticia(){
         $autenticador = new Autenticacion();
         $autenticador->checkLoggedIn();
-        $titulo = $_POST['titulo'];
-        $fecha = $_POST['fecha'];
-        $descripcion = $_POST['descripcion'];
-        //$idEquipo = $_POST['nombre_equipo'];
-        //$imagen = $_POST['imagen'}
-   
-        //if ($_FILES['imagen']['name']) {
-        //if ($_FILES['imagen']['type'] == "image/jpeg" || $_FILES['imagen']['type'] == "image/jpg" || $_FILES['imagen']['type'] == "image/png") {
-        if (!empty($titulo)  && !empty($fecha) && !empty($descripcion)) {
-            $this->model->guardar($titulo, $fecha, $descripcion, $idEquipo);
-            header("Location: " . VER);
-            die();
+        
+        // agarra el file
+        if ($_FILES['imagen']['name']) {
+            if ($_FILES['imagen']['type'] == "image/jpeg" || $_FILES['imagen']['type'] == "image/jpg" || $_FILES['imagen']['type'] == "image/png") {
+                
+                $this->model->guardar($_POST['titulo'], $_POST['fecha'], $_POST['contenido'], $_POST['equipo'], $_FILES['imagen']);
+            }
+            else {
+                $this->view->showError("Formato no aceptado");
+                die();
+            }
         }
-    //}
-    //}
         else {
-            $this->view->mostrarError("Faltan datos obligatorios");
+            $this->model->guardar($_POST['titulo'], $_POST['fecha'], $_POST['contenido'], $_POST['equipo']);  
         }
+        header("Location: " . basehref);
     }
 
     public function eliminarNoticia($params = null) {
