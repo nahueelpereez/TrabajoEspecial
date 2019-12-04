@@ -14,16 +14,14 @@
         </tr>
     </thead>
     {foreach $equipos as $equipo}
-    <form action="equipos/{$equipo->id_equipo}" method="GET">
     <tbody>
         <tr>
             <th scope="row">{$equipo->nombre}</th>
             <td>{$equipo->titulos}</td>
             <td>{$equipo->descripcion|truncate:1000:"..."}</td>
-            <td><button type="sumbit" class="btn btn-secondary">Editar</button></td>
-            <td><button type="sumbit" class="btn btn-danger">Eliminar</button></td>
+            <td><a class="btn btn-secondary" href="formEditarEquipo/{$equipo->id_equipo}">Editar</a></td>
+            <td><a type="sumbit" class="btn btn-danger" href="eliminarEquipo/{$equipo->id_equipo}">Eliminar</a></td>
         </tr>
-    </form>
     </tbody>
     {/foreach}
 </table>
