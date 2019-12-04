@@ -42,6 +42,23 @@ class LoginController{
         header('Location: ' . LOGIN);
     }
 	
+	public function getUsuarios(){
+    if($this->autenticador->isAdmin()){
+         // obtengo Equipos del model
+         $usuarios = $this->model->getusuarios();
+         $this->view->showUsuarios($usuarios);
+     }else{
+        $this->autenticador->checkadmin();
+
+     }
+    }
+	
+     public function AsignarAdmin($params = null){
+        $id = $params[':ID'];
+        $this->model->AsignarAdmin($id);
+        
+        }
+	
     public function NuevoUsuario(){
         
         $email = $_POST['email'];
