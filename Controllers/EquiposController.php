@@ -40,7 +40,7 @@ class EquiposController {
    
         if (!empty($nombre)  && !empty($titulos) && !empty($descripcion)) {
             $this->model->guardar($nombre, $titulos, $descripcion);
-            header("Location: " . equipos);
+            header("Location: " . basehref);
             die();
         }
         else {
@@ -59,7 +59,7 @@ class EquiposController {
         
         $idEquipo = $params[':ID'];
         $this->model->eliminar($idEquipo);
-        header("Location: " . equipos);
+        header("Location: " . basehref . noticias);
 
     }
 
@@ -82,7 +82,7 @@ class EquiposController {
             $descripcion = $_POST['descripcion'];
             $id_equipo = $_POST['id_equipo'];
             $this->model->editarEquipo($nombre, $titulos, $descripcion, $id_equipo);
-            header("Location" . basehref);
+            header("Location: " . basehref . noticias);
         }
         else {
             $this->view->mostrarError("Faltan datos obligatorios");
