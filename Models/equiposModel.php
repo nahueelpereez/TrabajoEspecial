@@ -37,5 +37,10 @@ class EquiposModel {
         $query->execute([$idEquipo]);
     }
 
+    public function editarEquipo($nombre, $titulos, $descripcion, $id_equipo){
+        $query = $this->db->prepare('UPDATE equipo SET nombre=?, titulos=?, descripcion=? WHERE id_equipo=?');
+        $query->execute(array($nombre, $titulos, $descripcion, $id_equipo));
+    }
+
 
 }
