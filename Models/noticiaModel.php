@@ -41,6 +41,12 @@ class NoticiaModel {
         return $this->db->lastInsertId();
     }
 
+    //Mueve la imagen y retorna la ubicacion
+    private function moveFile($imagen) {
+        $filepath = "img/task/" . uniqid() . "." . strtolower(pathinfo($imagen['name'], PATHINFO_EXTENSION));  
+        move_uploaded_file($imagen['tmp_name'], $filepath);
+        return $filepath;
+    }
     
     public function obtenerNombreEquipo() {
        $query = $this->db->prepare('SELECT n.*, e.nombre as nombre_equipo FROM noticia n JOIN equipo e  ON e.id_equipo = n.equipo');
