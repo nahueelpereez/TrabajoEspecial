@@ -16,6 +16,11 @@ class LoginView{
         $this->smarty->display('Templates/login.tpl');
     }
     
+    public function showUsuarios($usuarios) {
+        $this->smarty->assign('usuarios', $usuarios);
+        $this->smarty->display('Templates/admin.tpl');
+    }
+    
     public function ShowRegistro($error = null){
         $this->smarty->assign('titulo', 'Registrarse');
         $this->smarty->assign('error', $error);
