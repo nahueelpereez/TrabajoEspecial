@@ -20,12 +20,6 @@ class EquipoView {
     /**
      * Construye el html que permite visualizar el detalle de una tarea determinada.
      */
-    public function mostrarEquipo($equipo) {
-        $this->smarty->assign('titulo', 'Detalle de equipo');
-        $this->smarty->assign('equipo', $equipo);
-
-        $this->smarty->display('Templates/detallesEquipo.tpl');
-    }
 
     public function mostrarError($msgError) {
         echo "ERROR!";
@@ -38,4 +32,11 @@ class EquipoView {
         $this->smarty->display('Templates/formEquipo.tpl');
     }
 
+    public function showFormEditarEquipo($equipo){
+        $this->smarty->assign('titulo', 'Editar Equipo');
+        $this->smarty->assign('equipo', $equipo);
+        $this->smarty->display('Templates/formEditarEquipo.tpl');
+    }
+
 }
+
