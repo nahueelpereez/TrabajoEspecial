@@ -61,7 +61,7 @@ class NoticiasController{
         
         $idNoticia = $params[':ID'];
         $this->model->borrar($idNoticia);
-        header("Location: " . noticias);
+        header("Location: " . basehref);
     }
 
     public function showForm(){
@@ -78,14 +78,15 @@ class NoticiasController{
 
         if(!empty($titulo) && !empty($fecha) && !empty($descripcion)){
             $this->model->editar($titulo, $fecha, $descripcion);
-            header("Location" . noticias);
+            header("Location: " . basehref . noticias);
         }
     }
     
-    public function showFormEditar(){
+    public function showFormEditar($param = null){
+        $idNoticia = $param[':ID'];
+        $noticia = $this->model->getNoticia($idNoticia);
         
-        $this->view->showFormEditar();
-
+        $this->view->showFormEditar($noticia);
     }
 
 
