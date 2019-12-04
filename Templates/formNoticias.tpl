@@ -18,7 +18,7 @@
         </div>
         <div class="form-group">
             <h5>Descripcion</h5>
-            <textarea name="descripcion" class="form-control" rows="3"></textarea>
+            <input name="contenido" class="form-control" rows="3"></input>
         </div>
         <h5>Equipos</h5>
         <div class="btn-group">
