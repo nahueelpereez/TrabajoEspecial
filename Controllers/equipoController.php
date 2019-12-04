@@ -1,6 +1,7 @@
 <?php
 require_once('Models/equiposModel.php');
 require_once('Views/equiposView.php');
+require_once('AyudaLogin/autenticacion.php');
 
 class EquiposController {
 
@@ -23,16 +24,6 @@ class EquiposController {
         // se las paso a la vista
         $this->view->showEquipos($equipos);
     }
-
-public function obtenerEquipo($params = null){
-    $idEquipo = $params[':ID'];
-    $equipo = $this->model->get($idEquipo);
-
-    if ($equipo) // si existe la tarea
-        $this->view->mostrarEquipo($equipo);
-    else
-        $this->view->mostrarError('El equipo no existe');
-}
 
     public function showEquipos(){
         $this->view->showEquipos();
@@ -70,6 +61,32 @@ public function obtenerEquipo($params = null){
         $this->model->eliminar($idEquipo);
         header("Location: " . equipos);
 
+    }
+
+    public function showFormEditar($params = null){
+        
+        $idEquipo = $params[':ID'];
+        $equipo = $this->model->get($idEquipo);
+        $this->view->showFormEditarEquipo($equipo);
+
+    }
+
+    public function editarEquipo(){
+
+        $autenticador = new Autenticacion();
+        $autenticador->checkLoggedIn();
+        
+        if(isset($_POST['nombre']) && (isset($_POST['titulos'])) && (isset($_POST['descripcion'])) && (isset($_POST['id_equipo']))){
+            $nombre = $_POST['nombre'];
+            $titulos = $_POST['titulos'];
+            $descripcion = $_POST['descripcion'];
+            $id_equipo = $_POST['id_equipo'];
+            $this->model->editarEquipo($nombre, $titulos, $descripcion, $id_equipo);
+            header("Location" . basehref);
+        }
+        else {
+            $this->view->mostrarError("Faltan datos obligatorios");
+        }
     }
 }
     
