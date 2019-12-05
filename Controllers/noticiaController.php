@@ -66,7 +66,7 @@ class NoticiasController{
     }
 
     public function showForm(){
-        
+        session_start();
         $noticias = $this->modelE->getEquipos();
         $this->view->showForm($noticias);
 
