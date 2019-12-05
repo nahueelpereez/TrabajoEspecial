@@ -9,20 +9,17 @@ ocurre en el mundo del futbol registrandote en nuestra pagina.</p>
 
 <ul class="list-group mt-4">
     {foreach $noticias as $noticia}
-    <form>
         <li class="list-group-item">
         <h3>{$noticia->titulo}</h3> | {$noticia->fecha}
         {$noticia->contenido|truncate:1000:"..."}
         <h5>{$noticia->nombre_equipo}</h5>
         {if isset($smarty.session.id_usuario) }
-        <a href="editarNoticia/{$noticia->id_notica}" type="submit" class="btn  btn-secondary text-black btnEditar">EDITAR</a>
-        <a href="noticias/{$noticia->id_notica}" type="submit" class="btn  btn-secondary text-black btnVer">VER</a>
-        <a href="eliminar/{$noticia->id_notica}" class="btn  btn-danger text-black btnEliminar">ELIMINAR</a></li>
+        <a href="formEditarNoticia/{$noticia->id_notica}" class="btn  btn-secondary text-black btnEditar">EDITAR</a>
+        <a href="noticias/{$noticia->id_notica}" class="btn  btn-secondary text-black btnVer">VER</a>
+        <a href="eliminarNoticia/{$noticia->id_notica}" type="submit" class="btn  btn-danger text-black btnEliminar">ELIMINAR</a></li>
         {/if}
-    </form>
     {/foreach}
 </ul>
 
-{include 'Templates/formEditarNoticia.tpl'}
-
 {include 'Templates/footer.tpl'}
+
