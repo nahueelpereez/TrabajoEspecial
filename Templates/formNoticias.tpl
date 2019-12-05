@@ -21,18 +21,11 @@
             <input name="contenido" class="form-control" rows="3"></input>
         </div>
         <h5>Equipos</h5>
-        <div class="btn-group">
-        <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            Equipos
-        </button>
-        <div class="dropdown-menu">
-            <ul>
-                {foreach $noticias as $noticia}
-                    <li class="dropdown-item" name="nombre">{$noticia->nombre}</li>
+        <select name="equipo">
+                {foreach from=$noticias item=noticia}
+                    <option value="{$noticia->id_equipo}">{$noticia->nombre}</option>
                 {/foreach}
-            </ul>
-        </div>
-        </div>
+        </select>
         <div class="form-group">
             <h5>Imagen</h5>
             <input name="imagen" type="file" class="form-control" >
