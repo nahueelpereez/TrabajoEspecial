@@ -32,6 +32,7 @@
     $r->addRoute("mostrarAdministradores", "GET", "LoginController", "showAdministradores");
     $r->addRoute("mostrarFormEquipo", "GET", "EquiposController", "showForm");
     $r->addRoute("formEditarEquipo/:ID", "GET", "EquiposController", "showFormEditar");
+    $r->addRoute("formEditarNoticia/:ID", "GET", "NoticiasController", "showFormEditar");
     $r->addRoute("mostrarFormNoticia", "GET", "NoticiasController", "showForm");
     $r->addRoute("mostrarFormRegistro", "GET", "LoginController", "showRegistro");
     $r->addRoute("nuevaNoticia", "POST", "NoticiasController", "agregarNoticia");
