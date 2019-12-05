@@ -1,29 +1,41 @@
-{if isset($smarty.session.id_usuario) }
+{include 'Templates/header.tpl'}
 
 <h3>{$titulo1}</h3>
 
-<form action="editarNoticia" method="POST">
-    <ul class="list-group mt-4">
-            <li class="list-group-item">
-                <label>Titulo</label>
-                <input name="titulo" type="text" class="form-control" value="{$noticia->titulo}"
-                <label>Fecha</label>
-                <input name="fecha" type="date" class="form-control" value="{$noticia->fecha}"
-                <label>Contenido</label>
-                <input name="contenido" type="text" class="form-control" value="{$noticia->contenido|truncate:1000:"..."}"
-            <div class="dropdown">
-            <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                Dropdown button
-            </button>
-                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                {foreach $noticias $noticia}
-                    <a class="dropdown-item">{$noticia->nombre_equipo}</a>
-                {/foreach}
+<form action="editarNoticia/{$noticia->id_notica}" method="POST">
+<div class="row">
+            <div class="col-9">
+                <div class="form-group">
+                    <h5>Título</h5>
+                    <input name="titulo" type="text" class="form-control" value="{$noticia->titulo}">
                 </div>
             </div>
-            </li>
-    </ul>
-    <a href="editar/{$noticia->id_notica}" type="submit" class="btn  btn-secondary text-black btnEditar">EDITAR</a>
+            <div class="col">
+                <div class="form-group">
+                    <h5>Fecha</h5>
+                    <input name="fecha" type="date" class="form-control" value="{$noticia->fecha}">
+                </div>
+            </div>
+        </div>
+        <div class="form-group">
+            <h5>Descripcion</h5>
+            <input name="contenido" type="text" class="form-control" value="{$noticia->contenido|truncate:1000:"..."}">
+        </div>
+        <h5>Equipos</h5>
+        <select name="equipo">
+                {foreach from=$noticias item=noticia}
+                    <option value="{$noticia->id_equipo}">{$noticia->nombre}</option>
+                {/foreach}
+        </select>
+            <input class="form-control" hidden type="text" name="id_notica" value="{$noticia->id_notica}>
+        <div class="form-group">
+            <h5>Imagen</h5>
+            <input name="imagen" type="file" class="form-control" value="{$noticia->imagen}>
+        </div>
+        <div class="form-group">   
+        <button type="submit" class="btn  btn-secondary text-black btnEditar">EDITAR</button>
+        </div>
 </form>
 
-{/if}
+
+{include 'Templates/footer.tpl'}
