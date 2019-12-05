@@ -4,6 +4,7 @@
     <div class="container">    
         <h3>{$noticia->titulo}</h3><p>{$noticia->fecha}</p>
         <p>{$noticia->contenido|truncate:1000:"..."}</p>
+        <img src="{$noticia->imagen}">
     </div>
 </form>
 
