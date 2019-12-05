@@ -9,7 +9,26 @@ class Autenticacion{
         session_start();
         $_SESSION["id_usuario"] = $user->id_usuario;
         $_SESSION["email"] = $user->email;
+        $_SESSION['admin'] = $user->admin;
+
     }
+    //redireccion cuando no es admin a home
+    public function checkadmin(){
+        header('Location: '.BASE_URL.'home');
+     die();
+    }
+public function isAdmin(){
+//pregunta si la sesion esta habilitada y si existe
+if (session_status() != PHP_SESSION_ACTIVE)
+session_start();
+if (isset($_SESSION['admin'])) {
+    return $_SESSION['admin']==1;
+    return true;
+}else{
+    return false;
+}
+    }
+    //obtiene el usern
 
     public function logout(){
         session_start();
