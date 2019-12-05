@@ -33,20 +33,20 @@ class NoticiaModel {
    public function guardar($titulo, $fecha, $contenido, $idEquipo, $imagen = null) {
         $filepath = null;
         if ($imagen)
-            $filepath = $this->moveFile($imagen);
+        $filepath = $this->moveFile($imagen);
 
-        $sentencia = $this->db->prepare("INSERT INTO noticia(titulo, fecha, contenido, equipo, imagen) VALUES(?,?,?,?,?)");
-        $sentencia->execute(array($titulo, $fecha, $contenido, $idEquipo, $filepath));
-
+        $query = $this->db->prepare('INSERT INTO noticia(titulo, fecha, contenido, equipo, imagen) VALUES(?,?,?,?,?)');
+        $query->execute([$titulo, $fecha, $contenido, $idEquipo, $filepath]);
+        
         return $this->db->lastInsertId();
     }
 
-    //Mueve la imagen y retorna la ubicacion
-    private function moveFile($imagen) {
-        $filepath = "img/task/" . uniqid() . "." . strtolower(pathinfo($imagen['name'], PATHINFO_EXTENSION));  
+    private function moveFile($imagen){
+        $filepath = "img/noticias/" . uniqid() . "." . strtolower(pathinfo($imagen['name'], PATHINFO_EXTENSION));  
         move_uploaded_file($imagen['tmp_name'], $filepath);
         return $filepath;
     }
+
     
     public function obtenerNombreEquipo() {
        $query = $this->db->prepare('SELECT n.*, e.nombre as nombre_equipo FROM noticia n JOIN equipo e  ON e.id_equipo = n.equipo');
@@ -55,10 +55,10 @@ class NoticiaModel {
       
     }
     
-    public function editarNoticia($id_noticia, $fecha,$titulo, $descripcion){
-        $sentencia = $this->db->prepare('UPDATE noticia SET titulo=?, fecha=?, descripcion=? WHERE id_noticia=?');
-        $sentencia->execute(array($fecha, $titulo, $descripcion, $id_noticia));
-        var_dump($sentencia);
+    public function editarNoticia($titulo, $fecha, $contenido, $idEquipo, $imagen, $id_noticia){
+        $sentencia = $this->db->prepare('UPDATE noticia SET titulo=?, fecha=?, contenido=?, equipo=?, imagen=? WHERE id_noticia=?');
+        $sentencia->execute(array($titulo, $fecha, $contenido, $idEquipo, $imagen, $id_noticia));
+        var_dump ($sentencia);
     }
 
 }
