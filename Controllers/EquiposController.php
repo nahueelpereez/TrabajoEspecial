@@ -17,7 +17,7 @@ class EquiposController {
      * Muestra la lista de tareas.
      */
     public function obtenerEquipos() {
-
+        session_start();
         // obtengo Equipos del model
         $equipos = $this->model->getEquipos();
 
@@ -49,6 +49,7 @@ class EquiposController {
     }
     
     public function showForm(){
+        session_start();
         $this->view->showFormEquipo();
     }
     
