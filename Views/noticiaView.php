@@ -35,8 +35,16 @@ class NoticiaView {
     }
 
 
-    public function showForm(){
+    public function showForm($noticias){
         $this->smarty->assign('titulo', 'Agregar noticia');
+        $this->smarty->assign('noticias', $noticias);
         $this->smarty->display('Templates/formNoticias.tpl');
+    }
+
+    public function showFormEditar($noticia, $noticias){
+        $this->smarty->assign('titulo1', 'Editar Noticia');
+        $this->smarty->assign('noticia', $noticia);
+        $this->smarty->assign('noticias', $noticias);
+        $this->smarty->display('Templates/formEditarNoticia.tpl');
     }
 }
